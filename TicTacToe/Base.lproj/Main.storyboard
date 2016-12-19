@@ -1,14 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XWR-kH-lkr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +23,217 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aga-Z6-8r5">
+                                <rect key="frame" x="16" y="28" width="75" height="30"/>
+                                <state key="normal" title="New Game"/>
+                                <connections>
+                                    <segue destination="XWR-kH-lkr" kind="show" id="DWu-Xa-kNP"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WgT-FK-UJM">
+                                <rect key="frame" x="37" y="183" width="300" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyR-SH-u1g">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
+                                        <subviews>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgs-NC-BO1" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="IHF-wc-kCW"/>
+                                                    <constraint firstAttribute="width" constant="100" id="cPy-dt-m7C"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6e-Mx-16w" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="Jpc-gf-sJv"/>
+                                                    <constraint firstAttribute="height" constant="100" id="h9r-Tc-b6m"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZs-Th-mdh" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="200" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="WEF-BG-apX"/>
+                                                    <constraint firstAttribute="width" constant="100" id="jcb-dd-JK4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tak-sM-w07">
+                                        <rect key="frame" x="0.0" y="100" width="300" height="100"/>
+                                        <subviews>
+                                            <label opaque="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qum-O9-SIt" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="Fps-oO-NTw"/>
+                                                    <constraint firstAttribute="width" constant="100" id="m2V-kB-ZzW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4K-Jk-4SP" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="05o-al-zxC"/>
+                                                    <constraint firstAttribute="height" constant="100" id="6yF-k0-woG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMP-8x-kbH" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="200" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="Ugr-iO-wOw"/>
+                                                    <constraint firstAttribute="width" constant="100" id="oKu-KC-9g6"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Go-KO-Lrx">
+                                        <rect key="frame" x="0.0" y="200" width="300" height="100"/>
+                                        <subviews>
+                                            <label opaque="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZe-Tk-0yh" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="qUh-M6-DqR"/>
+                                                    <constraint firstAttribute="height" constant="100" id="w1w-vI-pwd"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpt-N5-DrF" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="JAy-t6-2jJ"/>
+                                                    <constraint firstAttribute="height" constant="100" id="T5S-1e-d7d"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgO-op-urZ" customClass="TTTButtons" customModule="TicTacToe" customModuleProvider="target">
+                                                <rect key="frame" x="200" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="QDi-LQ-0Qr"/>
+                                                    <constraint firstAttribute="width" constant="100" id="wsE-s4-fcx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="aga-Z6-8r5" secondAttribute="leading" id="HR8-eX-oYu"/>
+                            <constraint firstItem="WgT-FK-UJM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dgY-dB-MEB"/>
+                            <constraint firstItem="WgT-FK-UJM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ovC-LK-tVY"/>
+                            <constraint firstItem="aga-Z6-8r5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="ubb-bl-ycf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="fields" destination="Zgs-NC-BO1" id="B2y-z8-1Dn"/>
+                        <outletCollection property="fields" destination="H6e-Mx-16w" id="V0z-nx-zpG"/>
+                        <outletCollection property="fields" destination="XZs-Th-mdh" id="tBO-cI-4la"/>
+                        <outletCollection property="fields" destination="Qum-O9-SIt" id="nzf-hl-XDW"/>
+                        <outletCollection property="fields" destination="m4K-Jk-4SP" id="Gtv-0x-ULD"/>
+                        <outletCollection property="fields" destination="AMP-8x-kbH" id="2IX-1z-04O"/>
+                        <outletCollection property="fields" destination="MZe-Tk-0yh" id="PjX-cs-Wyt"/>
+                        <outletCollection property="fields" destination="Rpt-N5-DrF" id="Eua-qy-sAO"/>
+                        <outletCollection property="fields" destination="JgO-op-urZ" id="Mje-dH-nvU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="3748" y="-492.50374812593708"/>
+        </scene>
+        <!--Game Menu-->
+        <scene sceneID="q4j-Ud-hjh">
+            <objects>
+                <viewController id="XWR-kH-lkr" customClass="GameMenu" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a1Q-Iu-RhT"/>
+                        <viewControllerLayoutGuide type="bottom" id="LM3-SW-fEd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WPQ-E4-m6P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to go first?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7H-gB-u1V">
+                                <rect key="frame" x="32" y="146" width="310" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BtL-Df-rm3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92R-z0-gGp">
+                                <rect key="frame" x="32" y="368" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="RsJ-4r-hAD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Yes"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="PlayerFirst" id="mjw-TV-IoE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4d-zH-thp">
+                                <rect key="frame" x="292" y="368" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9sV-0T-1M4"/>
+                                    <constraint firstAttribute="width" constant="50" id="ekk-6A-joH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="No"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ComputerFirst" id="mjf-8P-nqb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="92R-z0-gGp" firstAttribute="top" secondItem="M4d-zH-thp" secondAttribute="top" id="1u5-ge-y2y"/>
+                            <constraint firstItem="92R-z0-gGp" firstAttribute="baseline" secondItem="M4d-zH-thp" secondAttribute="firstBaseline" id="DOu-rC-UuB"/>
+                            <constraint firstItem="92R-z0-gGp" firstAttribute="leading" secondItem="D7H-gB-u1V" secondAttribute="leading" id="Ezt-Ym-4G4"/>
+                            <constraint firstItem="92R-z0-gGp" firstAttribute="leading" secondItem="WPQ-E4-m6P" secondAttribute="leadingMargin" constant="16" id="Nts-bg-6P0"/>
+                            <constraint firstItem="D7H-gB-u1V" firstAttribute="top" secondItem="a1Q-Iu-RhT" secondAttribute="bottom" constant="126" id="U0b-GC-MsV"/>
+                            <constraint firstItem="LM3-SW-fEd" firstAttribute="top" secondItem="92R-z0-gGp" secondAttribute="bottom" constant="249" id="UEz-Dy-tKJ"/>
+                            <constraint firstItem="92R-z0-gGp" firstAttribute="firstBaseline" secondItem="M4d-zH-thp" secondAttribute="baseline" id="lDJ-Ab-t6o"/>
+                            <constraint firstItem="M4d-zH-thp" firstAttribute="trailing" secondItem="D7H-gB-u1V" secondAttribute="trailing" id="n9R-ak-IOH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M4d-zH-thp" secondAttribute="trailing" constant="17" id="t68-Xd-Co8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aDE-WR-BFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2950" y="-493"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mjf-8P-nqb"/>
+    </inferredMetricsTieBreakers>
 </document>
