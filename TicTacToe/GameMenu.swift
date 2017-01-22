@@ -28,4 +28,8 @@ class GameMenu: UIViewController {
             }
         }
     }
+    
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
+    
+    
 }

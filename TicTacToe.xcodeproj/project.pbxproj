@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		188D84191E08485F000AB1FA /* TTTButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D84181E08485F000AB1FA /* TTTButtons.swift */; };
+		188D841B1E085924000AB1FA /* Signatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D841A1E085924000AB1FA /* Signatures.swift */; };
 		18CD74071E0693E7007384AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74061E0693E7007384AB /* AppDelegate.swift */; };
 		18CD74091E0693E7007384AB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74081E0693E7007384AB /* GameViewController.swift */; };
 		18CD740C1E0693E7007384AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CD740A1E0693E7007384AB /* Main.storyboard */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		188D84181E08485F000AB1FA /* TTTButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTTButtons.swift; sourceTree = "<group>"; };
+		188D841A1E085924000AB1FA /* Signatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signatures.swift; sourceTree = "<group>"; };
 		18CD74031E0693E7007384AB /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CD74061E0693E7007384AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18CD74081E0693E7007384AB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -62,10 +62,10 @@
 			children = (
 				18CD741C1E06AD98007384AB /* Support Files */,
 				18CD74081E0693E7007384AB /* GameViewController.swift */,
+				18CD740A1E0693E7007384AB /* Main.storyboard */,
 				18CD741D1E06ADBF007384AB /* AIEngine.swift */,
 				18CD741A1E069E77007384AB /* GameMenu.swift */,
-				188D84181E08485F000AB1FA /* TTTButtons.swift */,
-				18CD740A1E0693E7007384AB /* Main.storyboard */,
+				188D841A1E085924000AB1FA /* Signatures.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -108,7 +108,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = apple;
 				TargetAttributes = {
 					18CD74021E0693E7007384AB = {
@@ -153,8 +153,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188D84191E08485F000AB1FA /* TTTButtons.swift in Sources */,
 				18CD741E1E06ADBF007384AB /* AIEngine.swift in Sources */,
+				188D841B1E085924000AB1FA /* Signatures.swift in Sources */,
 				18CD741B1E069E77007384AB /* GameMenu.swift in Sources */,
 				18CD74091E0693E7007384AB /* GameViewController.swift in Sources */,
 				18CD74071E0693E7007384AB /* AppDelegate.swift in Sources */,
@@ -201,6 +201,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -250,6 +251,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
