@@ -10,216 +10,170 @@ import Foundation
 import UIKit
 
 class AIEngine {
-
+    
     func decidePosition(_ fields: [UIButton], _ computerSignature: String, _ playerSignature: String, _ reference: String) -> Bool {
         
-        //from 0
-        if(fields[0].currentTitle == reference &&
-            fields[1].currentTitle == reference &&
-            fields[2].currentTitle != computerSignature &&
-            fields[2].currentTitle != playerSignature) {
-            fields[2].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[0].currentTitle == reference &&
-            fields[2].currentTitle == reference &&
-            fields[1].currentTitle != computerSignature &&
-            fields[1].currentTitle != playerSignature) {
-            fields[1].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[0].currentTitle == reference &&
-            fields[4].currentTitle == reference &&
-            fields[8].currentTitle != computerSignature &&
-            fields[8].currentTitle != playerSignature) {
-            fields[8].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[0].currentTitle == reference &&
-            fields[8].currentTitle == reference &&
-            fields[4].currentTitle != computerSignature &&
-            fields[4].currentTitle != playerSignature) {
-            fields[4].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[0].currentTitle == reference &&
-            fields[3].currentTitle == reference &&
-            fields[6].currentTitle != computerSignature &&
-            fields[6].currentTitle != playerSignature) {
-            fields[6].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[0].currentTitle == reference &&
-            fields[6].currentTitle == reference &&
-            fields[3].currentTitle != computerSignature &&
-            fields[3].currentTitle != playerSignature) {
-            fields[3].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-            
-        //from 1
-        else if(fields[1].currentTitle == reference &&
-            fields[4].currentTitle == reference &&
-            fields[7].currentTitle != computerSignature &&
-            fields[7].currentTitle != playerSignature) {
-            fields[7].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[1].currentTitle == reference &&
-            fields[7].currentTitle == reference &&
-            fields[4].currentTitle != computerSignature &&
-            fields[4].currentTitle != playerSignature) {
-            fields[4].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
+        let gridSize = fields.count
+        let elementsPerRow = Int(sqrt(Double(gridSize)))
         
-        //from 2
-        else if(fields[2].currentTitle == reference &&
-            fields[1].currentTitle == reference &&
-            fields[0].currentTitle != computerSignature &&
-            fields[0].currentTitle != playerSignature) {
-            fields[0].setTitle(computerSignature, for: UIControlState())
+        for position in 0..<gridSize {
             
-            return true
-        }
-        else if(fields[2].currentTitle == reference &&
-            fields[5].currentTitle == reference &&
-            fields[8].currentTitle != computerSignature &&
-            fields[8].currentTitle != playerSignature) {
-            fields[8].setTitle(computerSignature, for: UIControlState())
+            //check if position is available
+            if(fields[position].currentTitle != computerSignature &&
+                fields[position].currentTitle != playerSignature) {
+                
+                //decide on position
+                
+                var localPosition = position
+                var counter = 0
+                
+                //can go down and search elementsPerRow - 1 references
+                while(localPosition + elementsPerRow < gridSize - 1) {
+                    localPosition = localPosition + elementsPerRow
+                    if(fields[localPosition].currentTitle == reference) {
+                        counter += 1
+                    }
+                }
+                
+                //if enough references were found
+                if(counter == elementsPerRow - 1) {
+                    fields[position].setTitle(computerSignature, for: UIControlState())
+                    return true
+                }
+                
+                //reset local position
+                localPosition = position
+                
+                //can go up
+                while(localPosition - elementsPerRow > 0) {
+                    localPosition = localPosition - elementsPerRow
+                    if(fields[localPosition].currentTitle == reference) {
+                        counter += 1
+                    }
+                }
+                
+                if(counter == elementsPerRow - 1) {
+                    fields[position].setTitle(computerSignature, for: UIControlState())
+                    return true
+                }
+                
+                //reset local position
+                localPosition = position
+                
+                //reset counter because the line is changing
+                counter = 0
+                
+                //can go left
+                while(localPosition - 1 > 0 && localPosition % elementsPerRow != 0) {
+                    localPosition = localPosition - 1
+                    if(fields[localPosition].currentTitle == reference) {
+                        counter += 1
+                    }
+                }
+                
+                if(counter == elementsPerRow - 1) {
+                    fields[position].setTitle(computerSignature, for: UIControlState())
+                    return true
+                }
+                
+                //reset local position
+                localPosition = position
+                
+                //can go right
+                while(localPosition + 1 < (gridSize - 1) && (localPosition + 1) % elementsPerRow != 0) {
+                    localPosition = localPosition + 1
+                    if(fields[localPosition].currentTitle == reference) {
+                        counter += 1
+                    }
+                }
+                
+                if(counter == elementsPerRow - 1) {
+                    fields[position].setTitle(computerSignature, for: UIControlState())
+                    return true
+                }
+                
+                //reset local position
+                localPosition = position
+                
+                //reset counter because the line is changing
+                counter = 0
+                
+                //can go down main diagonal
+                while(localPosition + (elementsPerRow + 1) < gridSize - 1 && (localPosition + 1) % elementsPerRow != 0) {
+                    localPosition = localPosition + (elementsPerRow + 1)
+                    if(fields[localPosition].currentTitle == reference) {
+                        counter += 1
+                    }
+                }
+                
+                if(counter == elementsPerRow - 1) {
+                    fields[position].setTitle(computerSignature, for: UIControlState())
+                    return true
+                }
+                
+                //reset local position
+                localPosition = position
+                
+                //can go up main diagonal
+                while(localPosition - (elementsPerRow + 1) > 0 && localPosition % elementsPerRow != 0) {
+                    localPosition = localPosition - (elementsPerRow + 1)
+                    if(fields[localPosition].currentTitle == reference) {
+                        counter += 1
+                    }
+                }
+                
+                if(counter == elementsPerRow - 1) {
+                    fields[position].setTitle(computerSignature, for: UIControlState())
+                    return true
+                }
+                
+                //reset local position
+                localPosition = position
+                
+                //reset counter because the line is changing
+                counter = 0
+                
+                //can go down secondary diagonal
+                while(localPosition + (elementsPerRow - 1) < (gridSize - 1) - (elementsPerRow - 1) && localPosition % elementsPerRow != 0) {
+                    localPosition = localPosition + (elementsPerRow - 1)
+                    if(fields[localPosition].currentTitle == reference) {
+                        counter += 1
+                    }
+                }
+                
+                if(counter == elementsPerRow - 1) {
+                    fields[position].setTitle(computerSignature, for: UIControlState())
+                    return true
+                }
+                
+                //reset local position
+                localPosition = position
+                
+                //can go up secondary diagonal
+                while(localPosition - (elementsPerRow - 1) > elementsPerRow - 1 && (localPosition + 1) % elementsPerRow != 0) {
+                    localPosition = localPosition - (elementsPerRow - 1)
+                    if(fields[localPosition].currentTitle == reference) {
+                        counter += 1
+                    }
+                }
+                
+                if(counter == elementsPerRow - 1) {
+                    fields[position].setTitle(computerSignature, for: UIControlState())
+                    return true
+                }
+                
+            }
             
-            return true
-        }
-        else if(fields[2].currentTitle == reference &&
-            fields[8].currentTitle == reference &&
-            fields[5].currentTitle != computerSignature &&
-            fields[5].currentTitle != playerSignature) {
-            fields[5].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[2].currentTitle == reference &&
-            fields[4].currentTitle == reference &&
-            fields[6].currentTitle != computerSignature &&
-            fields[6].currentTitle != playerSignature) {
-            fields[6].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[2].currentTitle == reference &&
-            fields[6].currentTitle == reference &&
-            fields[4].currentTitle != computerSignature &&
-            fields[4].currentTitle != playerSignature) {
-            fields[4].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        
-        //from 3
-        else if(fields[3].currentTitle == reference &&
-            fields[4].currentTitle == reference &&
-            fields[5].currentTitle != computerSignature &&
-            fields[5].currentTitle != playerSignature) {
-            fields[5].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[3].currentTitle == reference &&
-            fields[5].currentTitle == reference &&
-            fields[4].currentTitle != computerSignature &&
-            fields[4].currentTitle != playerSignature) {
-            fields[4].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        
-        //from 5
-        else if(fields[5].currentTitle == reference &&
-            fields[4].currentTitle == reference &&
-            fields[3].currentTitle != computerSignature &&
-            fields[3].currentTitle != playerSignature) {
-            fields[3].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        
-        //from 6
-        else if(fields[6].currentTitle == reference &&
-            fields[3].currentTitle == reference &&
-            fields[0].currentTitle != computerSignature &&
-            fields[0].currentTitle != playerSignature) {
-            fields[0].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[6].currentTitle == reference &&
-            fields[4].currentTitle == reference &&
-            fields[2].currentTitle != computerSignature &&
-            fields[2].currentTitle != playerSignature) {
-            fields[2].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[6].currentTitle == reference &&
-            fields[7].currentTitle == reference &&
-            fields[8].currentTitle != computerSignature &&
-            fields[8].currentTitle != playerSignature) {
-            fields[8].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[6].currentTitle == reference &&
-            fields[8].currentTitle == reference &&
-            fields[7].currentTitle != computerSignature &&
-            fields[7].currentTitle != playerSignature) {
-            fields[7].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-            
-        //from 7
-        else if(fields[7].currentTitle == reference &&
-            fields[4].currentTitle == reference &&
-            fields[1].currentTitle != computerSignature &&
-            fields[1].currentTitle != playerSignature) {
-            fields[1].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-            
-        //from 8
-        else if(fields[8].currentTitle == reference &&
-            fields[5].currentTitle == reference &&
-            fields[2].currentTitle != computerSignature &&
-            fields[2].currentTitle != playerSignature) {
-            fields[2].setTitle(computerSignature, for: UIControlState())
-            
-            return true
-        }
-        else if(fields[8].currentTitle == reference &&
-            fields[4].currentTitle == reference &&
-            fields[0].currentTitle != computerSignature &&
-            fields[0].currentTitle != playerSignature) {
-            fields[0].setTitle(computerSignature, for: UIControlState())
-            
-            return true
         }
         
         return false
-        
     }
     
     func searchPosition(_ fields: [UIButton], _ computerSignature: String, _ playerSignature: String) {
         
+        //check winning positions
         if !decidePosition(fields, computerSignature, playerSignature, computerSignature) {
+            //check defense positions
             if !decidePosition(fields, computerSignature, playerSignature, playerSignature) {
                 
                 var r: Int?
